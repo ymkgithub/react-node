@@ -1,0 +1,15 @@
+stages:
+  - build&push
+
+build:
+  stage: build&push
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker-compose build
+    - docker tag node_acr:latest $CI_REGISTRY_IMAGE1
+    - docker tag react_acr:latest $CI_REGISTRY_IMAGE2
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $CI_REGISTRY_IMAGE1:$CI_PIPELINE_IID
+    - docker push $CI_REGISTRY_IMAGE2:$CI_PIPELINE_IID
