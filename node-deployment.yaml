@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-js-deployment
+  name: node-deployment
 spec:
   replicas: 2
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-js
-        image: bravinwasike/node-js
+        image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/node:40
         resources:
           limits:
             memory: "512Mi"
@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-js-service
+  name: node-service
 spec:
   type: LoadBalancer
   selector:
