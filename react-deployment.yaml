@@ -15,6 +15,8 @@ spec:
       containers:
       - name: react-app
         image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/react
+      imagePullSecrets:
+      - name: ymk
         resources:
           limits:
             memory: "356Mi"
