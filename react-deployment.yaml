@@ -23,7 +23,7 @@ spec:
           ports:
             - containerPort: 3000
       imagePullSecrets:
-        - name: harbor-registry-secret
+        - name: harbor-registry-secret1
 
 ---
 apiVersion: v1
