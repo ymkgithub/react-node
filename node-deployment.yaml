@@ -15,14 +15,14 @@ spec:
       containers:
       - name: node-js
         image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/node
-      imagePullSecrets:
-      - name: ymk
         resources:
           limits:
             memory: "512Mi"
             cpu: "500m"
         ports:
         - containerPort: 4000
+      imagePullSecrets:
+      - name: ymk
 
 ---
 
