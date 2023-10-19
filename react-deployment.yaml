@@ -13,16 +13,16 @@ spec:
         app: react-app
     spec:
       containers:
-      - name: react-app
-        image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/react
-      imagePullSecrets:
-      - name: ymk
+        - name: react-app
+          image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/react
         resources:
           limits:
             memory: "356Mi"
             cpu: "500m"
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+        - name: ymk
 
 ---
 
