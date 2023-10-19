@@ -22,7 +22,7 @@ spec:
         ports:
         - containerPort: 4000
       imagePullSecrets:
-      - name: ymk
+      - name: harbor-registry-secret
 
 ---
 
