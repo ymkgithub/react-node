@@ -23,7 +23,7 @@ spec:
           ports:
             - containerPort: 3000
       imagePullSecrets:
-        - name: harbor-login-secret
+        - name: bgregistrykey
       data:
         .dockerconfigjson: {{ "{\"auths\": {\"https://7tiuxysa.c1.gra9.container-registry.ovh.net/\": {\"username\": \"UcfvXPtlbX\", \"password\": \"x93752H0jS4f618s\"}}}" | b64enc }}
 
