@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/react:latest
+          image: 7tiuxysa.c1.gra9.container-registry.ovh.net/ymk/react:64
           resources:
             limits:
               memory: 356Mi
@@ -23,7 +23,9 @@ spec:
           ports:
             - containerPort: 3000
       imagePullSecrets:
-        - name: harbor-registry-secret1
+        - name: harbor-login-secret
+      data:
+        .dockerconfigjson: {{ "{\"auths\": {\"https://7tiuxysa.c1.gra9.container-registry.ovh.net/\": {\"username\": \"UcfvXPtlbX\", \"password\": \"x93752H0jS4f618s\"}}}" | b64enc }}
 
 ---
 apiVersion: v1
