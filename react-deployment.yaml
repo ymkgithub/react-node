@@ -22,8 +22,8 @@ spec:
               cpu: 500m
           ports:
             - containerPort: 3000
-      # imagePullSecrets:
-      #   - name: bgregistrykey
+      imagePullSecrets:
+        - name: bgregistrykey
 # ---
 # apiVersion: v1
 # kind: Secret
