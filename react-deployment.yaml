@@ -15,23 +15,23 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: nginx
+          image: 7tiuxysa.c1.gra9.container-registry.ovh.net/ymk/node:64
           resources:
             limits:
               memory: 356Mi
               cpu: 500m
           ports:
-            - containerPort: 80
-      imagePullSecrets:
-        - name: bgregistrykey
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: bgregistrykey
-type: kubernetes.io/dockerconfigjson
-data:
-  .dockerconfigjson: ew0KICAgICJhdXRocyI6IHsNCiAgICAgICAgICAgICI3dGl1eHlzYS5jMS5ncmE5LmNvbnRhaW5lci1yZWdpc3RyeS5vdmgubmV0Ijogew0KICAgICAgICAgICAgICAgICAgICAiYXV0aCI6ICJWV05tZGxoUWRHeGlXRHA0T1RNM05USklNR3BUTkdZMk1UaHoiDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgImh0dHBzOi8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsNCiAgICAgICAgICAgICAgICAgICAgImF1dGgiOiAiYlhWcmRHaHBlV0Z5T2xOb1lXMTFRREV4TWpVPSINCiAgICAgICAgICAgIH0NCiAgICB9DQp9
+            - containerPort: 3000
+      # imagePullSecrets:
+      #   - name: bgregistrykey
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: bgregistrykey
+# type: kubernetes.io/dockerconfigjson
+# data:
+#   .dockerconfigjson: ew0KICAgICJhdXRocyI6IHsNCiAgICAgICAgICAgICI3dGl1eHlzYS5jMS5ncmE5LmNvbnRhaW5lci1yZWdpc3RyeS5vdmgubmV0Ijogew0KICAgICAgICAgICAgICAgICAgICAiYXV0aCI6ICJWV05tZGxoUWRHeGlXRHA0T1RNM05USklNR3BUTkdZMk1UaHoiDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgImh0dHBzOi8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsNCiAgICAgICAgICAgICAgICAgICAgImF1dGgiOiAiYlhWcmRHaHBlV0Z5T2xOb1lXMTFRREV4TWpVPSINCiAgICAgICAgICAgIH0NCiAgICB9DQp9
 
 ---
 apiVersion: v1
@@ -44,5 +44,5 @@ spec:
     app: react-app
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 3000
+      targetPort: 3000
