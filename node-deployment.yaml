@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: node-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-js
@@ -23,16 +23,16 @@ spec:
           ports:
             - containerPort: 4000
       imagePullSecrets:
-        - name: bgregistrykey
+        - name: regcred
 
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: bgregistrykey
-type: kubernetes.io/dockerconfigjson
-data:
-  .dockerconfigjson: ew0KICAgICJhdXRocyI6IHsNCiAgICAgICAgICAgICI3dGl1eHlzYS5jMS5ncmE5LmNvbnRhaW5lci1yZWdpc3RyeS5vdmgubmV0Ijogew0KICAgICAgICAgICAgICAgICAgICAiYXV0aCI6ICJWV05tZGxoUWRHeGlXRHA0T1RNM05USklNR3BUTkdZMk1UaHoiDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgImh0dHBzOi8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsNCiAgICAgICAgICAgICAgICAgICAgImF1dGgiOiAiYlhWcmRHaHBlV0Z5T2xOb1lXMTFRREV4TWpVPSINCiAgICAgICAgICAgIH0NCiAgICB9DQp9
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: bgregistrykey
+# type: kubernetes.io/dockerconfigjson
+# data:
+#   .dockerconfigjson: ew0KICAgICJhdXRocyI6IHsNCiAgICAgICAgICAgICI3dGl1eHlzYS5jMS5ncmE5LmNvbnRhaW5lci1yZWdpc3RyeS5vdmgubmV0Ijogew0KICAgICAgICAgICAgICAgICAgICAiYXV0aCI6ICJWV05tZGxoUWRHeGlXRHA0T1RNM05USklNR3BUTkdZMk1UaHoiDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgImh0dHBzOi8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsNCiAgICAgICAgICAgICAgICAgICAgImF1dGgiOiAiYlhWcmRHaHBlV0Z5T2xOb1lXMTFRREV4TWpVPSINCiAgICAgICAgICAgIH0NCiAgICB9DQp9
 
 
 ---
