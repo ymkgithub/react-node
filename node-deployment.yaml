@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-js
-        image: 64m03412.c1.gra9.container-registry.ovh.net/staging_test_registry_7/node:latest
+        image: 7tiuxysa.c1.gra9.container-registry.ovh.net/ymk/node:64
         resources:
           limits:
             memory: "512Mi"
