@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: 7tiuxysa.c1.gra9.container-registry.ovh.net/ymk/react:64
+          image: nginx
           resources:
             limits:
               memory: 356Mi
               cpu: 500m
           ports:
-            - containerPort: 3000
+            - containerPort: 80
       imagePullSecrets:
         - name: bgregistrykey
 ---
@@ -44,5 +44,5 @@ spec:
     app: react-app
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 80
+      targetPort: 80
