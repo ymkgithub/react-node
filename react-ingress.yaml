@@ -6,7 +6,7 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - react.bicsglobal.com
+    - bicsglobal.com
     secretName: react-secret
   rules:
   - host: react.bicsglobal.com
