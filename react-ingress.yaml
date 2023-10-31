@@ -12,10 +12,10 @@ spec:
   - host: react.bicsglobal.com
     http:
       paths:
-      - path: /
+      - path: /ymk
         pathType: Prefix
         backend:
           service:
-            name: react
+            name: react-app-service
             port:
               number: 3000
