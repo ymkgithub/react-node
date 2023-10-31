@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: 7tiuxysa.c1.gra9.container-registry.ovh.net/ymk/react:{{.Values.Image List}}
+          image: 7tiuxysa.c1.gra9.container-registry.ovh.net/ymk/react
           resources:
             limits:
               memory: 356Mi
