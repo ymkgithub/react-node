@@ -18,5 +18,10 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
+            protocol: TCP
       imagePullSecrets:
-                - name: ymk-regcred
+            - name: ymk-regcred
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always
+            securityContext: {}
+            terminationGracePeriodSeconds: 30
