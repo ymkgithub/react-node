@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -7,7 +8,6 @@ metadata:
     app.kubernetes.io/instance: mahesh
 
 ---
-# Source: mahesh/templates/controller-serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -21,8 +21,8 @@ metadata:
   name: mahesh
   namespace: mahesh
 automountServiceAccountToken: true
+
 ---
-# Source: mahesh/templates/controller-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -35,9 +35,9 @@ metadata:
     app.kubernetes.io/component: controller
   name: mahesh-controller
   namespace: mahesh
-data:
+data: null
+
 ---
-# Source: mahesh/templates/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -50,7 +50,7 @@ metadata:
   name: mahesh
 rules:
   - apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
       - endpoints
@@ -61,13 +61,13 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - nodes
     verbs:
       - get
   - apiGroups:
-      - ''
+      - ""
     resources:
       - services
     verbs:
@@ -83,7 +83,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
@@ -103,8 +103,8 @@ rules:
       - get
       - list
       - watch
+
 ---
-# Source: mahesh/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -123,8 +123,8 @@ subjects:
   - kind: ServiceAccount
     name: mahesh
     namespace: mahesh
+
 ---
-# Source: mahesh/templates/controller-role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -139,13 +139,13 @@ metadata:
   namespace: mahesh
 rules:
   - apiGroups:
-      - ''
+      - ""
     resources:
       - namespaces
     verbs:
       - get
   - apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
       - pods
@@ -156,7 +156,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - services
     verbs:
@@ -186,29 +186,29 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
     resourceNames:
       - ingress-controller-leader
-    verbs:
-      - get
-      - update
+    # verbs:
+    #   - get
+    #   - update
   - apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
     verbs:
       - create
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
       - create
       - patch
+
 ---
-# Source: mahesh/templates/controller-rolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -229,8 +229,8 @@ subjects:
   - kind: ServiceAccount
     name: mahesh
     namespace: mahesh
+
 ---
-# Source: mahesh/templates/controller-service-webhook.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -254,12 +254,12 @@ spec:
     app.kubernetes.io/name: mahesh
     app.kubernetes.io/instance: mahesh
     app.kubernetes.io/component: controller
+
 ---
-# Source: mahesh/templates/controller-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
+  annotations: null
   labels:
     helm.sh/chart: mahesh-4.0.1
     app.kubernetes.io/name: mahesh
@@ -287,8 +287,8 @@ spec:
     app.kubernetes.io/name: mahesh
     app.kubernetes.io/instance: mahesh
     app.kubernetes.io/component: controller
+
 ---
-# Source: mahesh/templates/controller-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -400,10 +400,8 @@ spec:
         - name: webhook-cert
           secret:
             secretName: mahesh-admission
+
 ---
-# Source: mahesh/templates/controller-ingressclass.yaml
-# We don't support namespaced ingressClass yet
-# So a ClusterRole and a ClusterRoleBinding is required
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
@@ -418,10 +416,8 @@ metadata:
   namespace: mahesh
 spec:
   controller: k8s.io/mahesh
+
 ---
-# Source: mahesh/templates/admission-webhooks/validating-webhook.yaml
-# before changing this value, check the required kubernetes version
-# https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#prerequisites
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
@@ -455,8 +451,8 @@ webhooks:
         namespace: mahesh
         name: mahesh-controller-admission
         path: /networking/v1/ingresses
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -472,8 +468,8 @@ metadata:
     app.kubernetes.io/version: 1.0.0
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: admission-webhook
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -496,8 +492,8 @@ rules:
     verbs:
       - get
       - update
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -520,8 +516,8 @@ subjects:
   - kind: ServiceAccount
     name: mahesh-admission
     namespace: mahesh
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -539,14 +535,14 @@ metadata:
     app.kubernetes.io/component: admission-webhook
 rules:
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
       - get
       - create
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/rolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -570,8 +566,8 @@ subjects:
   - kind: ServiceAccount
     name: mahesh-admission
     namespace: mahesh
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/job-createSecret.yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -620,8 +616,8 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
+
 ---
-# Source: mahesh/templates/admission-webhooks/job-patch/job-patchWebhook.yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
