@@ -30,7 +30,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: react-app
+    app: react
   ports:
     - protocol: TCP
       port: 3000
