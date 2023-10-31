@@ -191,6 +191,7 @@ rules:
       - configmaps
     resourceNames:
       - ingress-controller-leader
+    # ncncd
   - apiGroups:
       - ""
     resources:
