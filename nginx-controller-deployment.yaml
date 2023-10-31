@@ -191,9 +191,6 @@ rules:
       - configmaps
     resourceNames:
       - ingress-controller-leader
-    # verbs:
-    #   - get
-    #   - update
   - apiGroups:
       - ""
     resources:
